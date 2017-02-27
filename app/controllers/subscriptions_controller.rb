@@ -25,6 +25,10 @@ class SubscriptionsController < ApplicationController
 	  redirect_to users_path
 	end
 
+	def index
+
+	end
+
 	def show
 
 	end
