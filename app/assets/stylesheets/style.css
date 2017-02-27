@@ -1,0 +1,15 @@
+.paddingTop60 {
+	padding-top: 60px;
+}
+
+.friend-row :nth-child(4n + 1), .friend-row :nth-child(4n + 2) {
+    background-color: #F8F8F8;
+}
+
+.friend-row :nth-child(4n + 3), .friend-row :nth-child(4n + 4) {
+    background-color: blue;
+}
+
+.w300 {
+	width: 300px;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notifications</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'style.css',media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'sample.js', 'data-turbolinks-track': 'true' %>
+  </head>
+
+  <body>
+  	<%= render 'layouts/header' %>
+  	<div class="container paddingTop60">
+    	<%= yield %>
+    </div>
+  </body>
+</html>

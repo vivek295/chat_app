@@ -1,0 +1,4 @@
+<% @users.each do |user| %>
+	<%= user.username %> <%= link_to "Subscribe",subscriptions_path(friend_id: user.id),method: 'post' %>
+	<br>
+<% end %>
