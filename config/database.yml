@@ -84,5 +84,5 @@ development:
 production:
   <<: *default
   database: notifications_production
-  username: notifications
-  password: <%= ENV['NOTIFICATIONS_DATABASE_PASSWORD'] %>
+  # username: notifications
+  # password: <%= ENV['NOTIFICATIONS_DATABASE_PASSWORD'] %>

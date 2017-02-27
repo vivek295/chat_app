@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  ENV['SECRET_KEY_BASE'] = '4ef52d18fbeab34d65fa147f9e02f24681955451969ce7d6110c16dc6dd4020d00ad8c2d1b0ea7fae3d85df373127a86f8793ba1e31fde8cb6a2626ae0f19674'
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -36,7 +36,7 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
+  config.action_cable.url = 'wss://action-cable-notifications.herokuapp.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
