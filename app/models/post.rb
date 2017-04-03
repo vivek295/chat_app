@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 			Notification.create(user_id: friend.id, notification_text: text)
 			notes = friend.notifications.where(seen: false).count
 			ActionCable.server.broadcast "room_channel_user_#{friend.id}",
-        message: text, count: notes
+        message: text, count: notes, type: "Notification"
     end
 	end
 

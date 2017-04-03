@@ -1,3 +1,4 @@
+require 'irb'
 class PostsController < ApplicationController
 	before_action :authenticate_user!
 	def new
@@ -32,7 +33,7 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.all
+		@posts = current_user.posts.order(created_at: :desc).paginate(page: params[:page], per_page: 6)
 	end
 
 	def destroy
@@ -48,6 +49,23 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+	end
+
+	def feed
+		
+		if !params[:page]
+			user = current_user
+			user.last_drawn_at = Time.now
+			user.save
+		end
+		@posts = Post.where(user_id: current_user.friends.pluck(:id)<< current_user.id).order(created_at: :desc).paginate(page: params[:page], per_page: 6)
+	end
+
+	def recent_posts
+		user = current_user
+		user.last_drawn_at = Time.now
+		user.save
+		@posts = Post.where(user_id: current_user.friends.pluck(:id)<< current_user.id ).order(created_at: :desc).where("created_at > ?",current_user.last_drawn_at)
 	end
 
 	private

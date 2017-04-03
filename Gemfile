@@ -9,11 +9,14 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
-gem 'redis'
+# gem 'redis'
+gem 'will_paginate'
+gem 'ckeditor_rails'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'delayed_job_active_record'
 gem "font-awesome-rails"
+gem 'carrierwave'
 # gem 'bootstrap'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

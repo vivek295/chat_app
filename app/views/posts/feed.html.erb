@@ -1,0 +1,15 @@
+<div id = "new_post_info_container">
+	<a href="<%= recent_posts_posts_path%>" data-remote="true">
+		<div id = "new_post_info" class="col-sm-offset-5 col-sm-2 hidden">
+			<span id ="new_post_count">0</span> new posts
+		</div>
+	</a>
+</div>
+
+<div id = "feed" class = "user_posts col-sm-12">
+	<%= render partial: 'posts', locals: {posts: @posts} %>
+</div>
+
+<div class="hidden" id="posts-pagination">
+  <%= will_paginate @posts %>
+</div>

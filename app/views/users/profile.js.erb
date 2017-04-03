@@ -1,0 +1,6 @@
+$('#feed.user_posts').append('<%= j render partial: 'posts/profile_posts' ,locals: { posts: @posts } %>')
+<% if @posts.next_page %>
+  $('#posts-pagination .pagination').replaceWith('<%= j will_paginate @posts %>');
+<% else %>
+  $('#posts-pagination .pagination').remove();
+<% end %>

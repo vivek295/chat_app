@@ -1,0 +1,25 @@
+<div class = "col-sm-2">
+	<div class="image-container full-width">
+		<%= image_tag @user.image, class: 'full-width' %>
+	</div>
+	<p class="center-text"> <%= @user.username %> </p>
+  <p class="center-text"> <%= @user.email %> </p>
+</div>
+
+<div class="col-sm-10">
+	<div id = "new_post_info_container">
+
+		<div id = "new_post_info" class="col-sm-offset-5 col-sm-2 hidden">
+			<span id ="new_post_count">0</span> new posts
+		</div>
+
+	</div>
+
+	<div id = "feed" class = "user_posts col-sm-12">
+		<%= render partial: 'posts/profile_posts', locals: {posts: @posts} %>
+	</div>
+
+	<div class="hidden" id="posts-pagination">
+	  <%= will_paginate @posts %>
+	</div>
+</div>

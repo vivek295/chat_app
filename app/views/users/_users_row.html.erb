@@ -1,0 +1,6 @@
+<% users.each do |user| %>
+	<tr id="user_<%= user.id %>">
+		<td> <%= user.username %></td>
+		<td> <%= link_to "Subscribe", subscriptions_path(friend_id: user.id),method: 'post',remote: true,class: 'pull-right follow' %></td>
+	</tr>
+<% end %>

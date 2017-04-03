@@ -1,0 +1,8 @@
+<% posts.each do |post| %>
+
+	<div class="post-content"> 
+		<%= link_to (raw("<i class='fa fa-thumbs-up'></i>")),"",class: 'button post-edit-button' %>
+		<%= post.content.html_safe %>
+	</div>
+
+<% end %>

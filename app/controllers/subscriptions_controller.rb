@@ -9,8 +9,9 @@ class SubscriptionsController < ApplicationController
 	    count = User.find(@subscription.friend_id).notifications.where(seen: false).count
       ActionCable.server.broadcast "room_channel_user_#{@subscription.friend_id}",
         message: text, 
-        count: count
-      head :ok
+        count: count,
+        type: "Notification"
+      # head :ok
 	    # redirect_to users_path
 	  else
 	    flash[:error] = "Unable to add Subscription"

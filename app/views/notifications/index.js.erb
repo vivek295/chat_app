@@ -1,0 +1,11 @@
+<% if !@notifications.previous_page %>
+$('#user-notification-list').empty();
+<% end %>
+$('#user-notification-list').append('<%= escape_javascript render partial: 'notifications/notification_list', locals: {notifications: @notifications} %>');
+<% if @notifications.next_page %>
+	$('#notification-pagination').empty();
+  $('#notification-pagination').append('<%= j will_paginate @notifications %>');
+<% else %>
+  $('#notification-pagination .pagination').remove();
+<% end %>
+$('#notification-count').text("0");

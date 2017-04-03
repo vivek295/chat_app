@@ -1,4 +1,12 @@
-<% @users.each do |user| %>
-	<%= user.username %> <%= link_to "Subscribe",subscriptions_path(friend_id: user.id),method: 'post' %>
-	<br>
-<% end %>
+<table class="table table-responsive" id= "user-table">
+  <thead>
+  	<th><b>User</b></th>
+  	<th> </th>
+  </thead>
+  <tbody id="scroll-users">
+    <%= render partial: 'users_row', locals: {users: @users} %>
+  </tbody>
+</table>
+<div class="hidden" id="users-pagination">
+  <%= will_paginate @products %>
+</div>

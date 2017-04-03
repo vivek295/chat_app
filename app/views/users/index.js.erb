@@ -1,0 +1,6 @@
+$('#scroll-users').append('<%= j render partial: 'users/users_row' ,locals: { users: @users } %>')
+<% if @users.next_page %>
+  $('#users-pagination .pagination').replaceWith('<%= j will_paginate @users %>');
+<% else %>
+  $('#users-pagination .pagination').remove();
+<% end %>

@@ -1,0 +1,9 @@
+<h4>Your Posts : </h4>
+
+<div id = "user-profile" class = "user_posts col-sm-12">
+	<%= render partial: 'profile_posts', locals: {posts: @posts} %>
+</div>
+
+<div class="hidden" id="profile-posts-pagination">
+  <%= will_paginate @posts %>
+</div>

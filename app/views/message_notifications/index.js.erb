@@ -1,0 +1,11 @@
+<% if !@message_notifications.previous_page %>
+$('#user-message-list').empty();
+<% end %>
+$('#user-message-list').append('<%= escape_javascript render partial: 'message_notifications/notification_list', locals: {notifications: @message_notifications} %>');
+<% if @message_notifications.next_page %>
+	$('#msg-notification-pagination').empty();
+  $('#msg-notification-pagination').append('<%= j will_paginate @message_notifications %>');
+<% else %>
+  $('#msg-notification-pagination .pagination').remove();
+<% end %>
+$('#msg-notification-count').text("0");
