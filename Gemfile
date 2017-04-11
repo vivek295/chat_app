@@ -16,6 +16,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'delayed_job_active_record'
 gem "font-awesome-rails"
+gem 'haml'
 gem 'carrierwave'
 # gem 'bootstrap'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

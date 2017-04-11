@@ -1,0 +1,54 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#{user_signed_in? ? feed_posts_path : root_path}"} Notifications
+    #navbar.navbar-collapse.collapse
+      - if user_signed_in?
+        %ul.nav.navbar-nav
+          %li{:class => "#{"active" if controller?("users") and action?("index")}"}
+            %a{:href => users_path} Users
+          %li{:class => "#{"active" if controller?("users") and action?("show")}"}
+            %a{:href => "#{user_path(current_user)}"} Contact
+          %li{:class => "#{"active" if controller?("posts")}"}
+            %a{:href => new_post_path} Post
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li.dropdown.open-messages
+            %a.dropdown-toggle{"aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              %span.fa.fa-paper-plane{"aria-hidden" => "true"}
+              %span#msg-notification-count.badge.badge-success{"aria-hidden" => "true"}= current_user.message_notifications.where(seen: false).count
+            %ul#message-table.dropdown-menu.w300{:role => "menu"}
+              %div
+                %table#message-table
+                  %tbody#user-message-list
+              #msg-notification-pagination.hidden
+          %li.dropdown.open-notification
+            %a.dropdown-toggle{"aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              %span.fa.fa-bell-o.fs14.va-m{"aria-hidden" => "true"}
+              %span#notification-count.badge.badge-danger{"aria-hidden" => "true"}= current_user.notifications.where(seen: false).count
+            %ul#notification-table.dropdown-menu.w300{:role => "menu"}
+              %div
+                %table#notification-table
+                  %tbody#user-notification-list
+              #notification-pagination.hidden
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = current_user.username
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#{profile_user_path(current_user)}"} Profile
+              %li
+                %a{:href => edit_user_registration_path} Account
+              %li.divider{:role => "separator"}
+              %li
+                %a{"data-method" => "delete", :href => destroy_user_session_path} Logout
+        - else
+          %li
+            %a{:href => new_user_session_path} Sign in
+    / /.nav-collapse

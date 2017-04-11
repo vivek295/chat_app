@@ -1,0 +1,12 @@
+!!!5
+%html
+  %head
+    %title Notifications
+    = csrf_meta_tag
+    = stylesheet_link_tag 'application',media: 'all', 'data_turbolink_track': 'reload'
+    = stylesheet_link_tag 'style.css', media: 'all', 'data_turbolink_track': true
+    = javascript_include_tag 'application', 'data_turbolink_track': 'reload'
+  %body
+    =render 'layouts/header'
+    .container.paddingTop60 
+      =yield
